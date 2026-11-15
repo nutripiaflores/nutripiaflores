@@ -200,3 +200,58 @@ h1 em,h2 em{font-style:italic;color:var(--berry)}
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{scroll-behavior:auto!important;transition:none!important}
 }
+
+
+/* Ajuste de proporciones de la sección Sobre mí */
+.about-grid{
+  display:grid;
+  grid-template-columns:minmax(0,.85fr) minmax(0,1.05fr) minmax(250px,.75fr);
+  gap:clamp(24px,3vw,48px);
+  align-items:center;
+}
+.about-content{display:contents}
+.about-heading,.about-copy{min-width:0}
+.about-copy{padding-top:0}
+.about-copy .lead{font-size:clamp(19px,1.55vw,22px);line-height:1.5}
+.about-photo{
+  width:100%;
+  max-width:360px;
+  height:clamp(360px,42vw,510px);
+  margin:0;
+  justify-self:end;
+  align-self:center;
+  overflow:hidden;
+  background:#eee9df;
+}
+.about-photo img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 22%;
+}
+@media(max-width:1000px){
+  .about-grid{
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:28px;
+  }
+  .about-photo{
+    grid-column:1 / -1;
+    justify-self:center;
+    width:min(100%,420px);
+    height:480px;
+  }
+}
+@media(max-width:700px){
+  .about-grid{
+    grid-template-columns:minmax(0,1fr);
+    gap:22px;
+  }
+  .about-heading,.about-copy,.about-photo{grid-column:1}
+  .about-photo{
+    width:min(100%,360px);
+    height:430px;
+    justify-self:center;
+  }
+  .about-copy .lead{font-size:21px}
+}
